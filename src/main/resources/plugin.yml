@@ -1,0 +1,4 @@
+name: AuthMeGreetings
+version: '${project.version}'
+main: me.newalvaro9.authmegreetings.AuthMeGreetings
+api-version: '1.20'
