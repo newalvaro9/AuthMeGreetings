@@ -1,6 +1,5 @@
 package me.newalvaro9.authmegreetings.listener;
 
-import fr.xephi.authme.events.AuthMeAsyncPreLoginEvent;
 import fr.xephi.authme.events.LoginEvent;
 
 import org.bukkit.ChatColor;
