@@ -1,0 +1,5 @@
+welcome_message:
+  enable_public_message: true
+  enable_private_message: true
+  public_message: "%name% joined the server"
+  private_message: "Welcome back %name%"

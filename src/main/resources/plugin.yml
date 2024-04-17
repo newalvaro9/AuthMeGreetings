@@ -2,3 +2,21 @@ name: AuthMeGreetings
 version: '${project.version}'
 main: me.newalvaro9.authmegreetings.AuthMeGreetings
 api-version: '1.20'
+softdepend:
+  - AuthMe
+commands:
+  authmegreetings:
+    description: 'Shows the AuthMeGreetings'
+    usage: '/authmegreetings <subcommand>'
+    permission: authmegreetings.admin
+    permission-message: "You don't have permission to run this command."
+  amg:
+    description: 'Shows the AuthMeGreetings'
+    usage: '/authmegreetings <subcommand>'
+    permission: authmegreetings.admin
+    permission-message: "You don't have permission to run this command."
+
+permissions:
+  permission.admin:
+    description: Allows the access to all commands.
+    default: op
