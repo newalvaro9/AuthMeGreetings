@@ -1,9 +1,13 @@
 package me.newalvaro9.authmegreetings;
+
 import me.newalvaro9.authmegreetings.listener.AuthMeListener;
 import me.newalvaro9.authmegreetings.service.AuthMeHook;
+import me.newalvaro9.authmegreetings.service.AMGCommands;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Objects;
 
 public class AuthMeGreetings extends JavaPlugin {
 
@@ -23,6 +27,10 @@ public class AuthMeGreetings extends JavaPlugin {
         plugin = this;
 
         final PluginManager pluginManager = getServer().getPluginManager();
+
+        // Commands
+        Objects.requireNonNull(getCommand("amg")).setExecutor(new AMGCommands(this));
+        Objects.requireNonNull(getCommand("authmegreetings")).setExecutor(new AMGCommands(this));
 
         // BEFORE REGISTERING THE AUTHME COMPONENTS
         saveDefaultConfig();
