@@ -3,3 +3,16 @@ welcome_message:
   enable_private_message: true
   public_message: "&e%name% joined the server"
   private_message: "&7Welcome back %name%!"
+welcome_title:
+  # Whether if the welcome title module should be enabled
+  enable_title: true
+  # The title
+  title: "WELCOME %name%"
+  # The subtitle. Leave "" if you don't want any subtitle
+  subtitle: ""
+  # Time in ticks for the title to fade in. Defaults to 10.
+  fadeIn: 10
+  # Time in ticks for titles to stay. Defaults to 70.
+  stay: 70
+  # Time in ticks for titles to fade out. Defaults to 20.
+  fadeOut: 20

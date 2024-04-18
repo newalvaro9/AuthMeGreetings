@@ -19,6 +19,14 @@ public class AuthMeGreetings extends JavaPlugin {
     public Boolean isPrivateJoinMessageEnabled;
     public String privateJoinMessage;
 
+    // welcome_title
+    public Boolean isJoinTitleEnabled;
+    public String joinTitle;
+    public String joinTitleSubtitle;
+    public Integer joinTitleFadeIn;
+    public Integer joinTitleStay;
+    public Integer joinTitleFadeOut;
+
     public Listener authMeListener;
     public AuthMeHook authMeHook;
 
@@ -60,7 +68,18 @@ public class AuthMeGreetings extends JavaPlugin {
         getLogger().info("Hooking into AuthMe");
         authMeHook.initializeAuthMeHook();
         if (authMeListener == null) {
-            authMeListener = new AuthMeListener(isPublicJoinMessageEnabled, publicJoinMessage, isPrivateJoinMessageEnabled, privateJoinMessage);
+            authMeListener = new AuthMeListener(
+                    isPublicJoinMessageEnabled,
+                    publicJoinMessage,
+                    isPrivateJoinMessageEnabled,
+                    privateJoinMessage,
+                    isJoinTitleEnabled,
+                    joinTitle,
+                    joinTitleSubtitle,
+                    joinTitleFadeIn,
+                    joinTitleStay,
+                    joinTitleFadeOut
+            );
             getServer().getPluginManager().registerEvents(authMeListener, this);
         }
     }
@@ -75,6 +94,17 @@ public class AuthMeGreetings extends JavaPlugin {
             privateJoinMessage = getConfig().getString("welcome_message.private_message");
         } else {
             throw new IllegalArgumentException("Missing welcome_message properties [AuthMeGreetings/config.yml].");
+        }
+
+        if (getConfig().contains("welcome_title")) {
+            isJoinTitleEnabled = getConfig().getBoolean("welcome_title.enable_title");
+            joinTitle = getConfig().getString("welcome_title.title");
+            joinTitleSubtitle = getConfig().getString("welcome_title.subtitle");
+            joinTitleFadeIn = getConfig().getInt("welcome_title.fadeIn");
+            joinTitleStay = getConfig().getInt("welcome_title.stay");
+            joinTitleFadeOut = getConfig().getInt("welcome_title.fadeOut");
+        } else {
+            throw new IllegalArgumentException("Missing welcome_title properties [AuthMeGreetings/config.yml].");
         }
     }
 }

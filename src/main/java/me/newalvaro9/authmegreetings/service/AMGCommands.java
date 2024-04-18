@@ -38,11 +38,29 @@ public class AMGCommands implements CommandExecutor {
                 String publicJoinMessage = plugin.getConfig().getString("welcome_message.public_message");
                 String privateJoinMessage = plugin.getConfig().getString("welcome_message.private_message");
 
+                Boolean isJoinTitleEnabled = plugin.getConfig().getBoolean("welcome_title.enable_title");
+                String joinTitle = plugin.getConfig().getString("welcome_title.title");
+                String joinTitleSubtitle = plugin.getConfig().getString("welcome_title.subtitle");
+                Integer joinTitleFadeIn = plugin.getConfig().getInt("welcome_title.fadeIn");
+                Integer joinTitleStay = plugin.getConfig().getInt("welcome_title.stay");
+                Integer joinTitleFadeOut = plugin.getConfig().getInt("welcome_title.fadeOut");
+
                 // Unregister all the listeners and set new ones with new config
                 HandlerList.unregisterAll(plugin);
 
                 // AuthMeListener
-                AuthMeListener newListener = new AuthMeListener(isPublicJoinMessageEnabled, publicJoinMessage, isPrivateJoinMessageEnabled, privateJoinMessage);
+                AuthMeListener newListener = new AuthMeListener(
+                        isPublicJoinMessageEnabled,
+                        publicJoinMessage,
+                        isPrivateJoinMessageEnabled,
+                        privateJoinMessage,
+                        isJoinTitleEnabled,
+                        joinTitle,
+                        joinTitleSubtitle,
+                        joinTitleFadeIn,
+                        joinTitleStay,
+                        joinTitleFadeOut
+                );
                 plugin.getServer().getPluginManager().registerEvents(newListener, plugin);
 
                 sender.sendMessage(ChatColor.GOLD + "Successfully reloaded AuthMeGreetings!");
