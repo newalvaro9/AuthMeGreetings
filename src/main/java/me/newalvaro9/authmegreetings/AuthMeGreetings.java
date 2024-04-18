@@ -13,9 +13,9 @@ public class AuthMeGreetings extends JavaPlugin {
 
     private static AuthMeGreetings plugin;
 
+    // welcome_message
     public Boolean isPublicJoinMessageEnabled;
     public String publicJoinMessage;
-
     public Boolean isPrivateJoinMessageEnabled;
     public String privateJoinMessage;
 

@@ -12,9 +12,9 @@ import java.util.Objects;
 
 public class AuthMeListener implements Listener {
 
+    // welcome_message
     public Boolean isPublicJoinMessageEnabled;
     public String publicJoinMessage;
-
     public Boolean isPrivateJoinMessageEnabled;
     public String privateJoinMessage;
 

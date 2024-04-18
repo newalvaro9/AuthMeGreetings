@@ -1,8 +1,13 @@
 welcome_message:
+  # Whether if the welcome public message module should be enabled
   enable_public_message: true
+  # Whether if the welcome private message module should be enabled
   enable_private_message: true
+  # The public welcome message. Leave "" to remove the join message.
   public_message: "&e%name% joined the server"
+  # The private welcome message.
   private_message: "&7Welcome back %name%!"
+
 welcome_title:
   # Whether if the welcome title module should be enabled
   enable_title: true
