@@ -3,6 +3,7 @@ package me.newalvaro9.authmegreetings;
 import me.newalvaro9.authmegreetings.listener.AuthMeListener;
 import me.newalvaro9.authmegreetings.service.AuthMeHook;
 import me.newalvaro9.authmegreetings.service.AMGCommands;
+
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,6 +27,12 @@ public class AuthMeGreetings extends JavaPlugin {
     public Integer joinTitleFadeIn;
     public Integer joinTitleStay;
     public Integer joinTitleFadeOut;
+
+    // welcome_sound
+    public Boolean isJoinSoundEnabled;
+    public String joinSound;
+    public Float joinSoundVolume;
+    public Float joinSoundPitch;
 
     public Listener authMeListener;
     public AuthMeHook authMeHook;
@@ -78,7 +85,11 @@ public class AuthMeGreetings extends JavaPlugin {
                     joinTitleSubtitle,
                     joinTitleFadeIn,
                     joinTitleStay,
-                    joinTitleFadeOut
+                    joinTitleFadeOut,
+                    isJoinSoundEnabled,
+                    joinSound,
+                    joinSoundVolume,
+                    joinSoundPitch
             );
             getServer().getPluginManager().registerEvents(authMeListener, this);
         }
@@ -101,6 +112,13 @@ public class AuthMeGreetings extends JavaPlugin {
             joinTitleFadeIn = getConfig().getInt("welcome_title.fadeIn");
             joinTitleStay = getConfig().getInt("welcome_title.stay");
             joinTitleFadeOut = getConfig().getInt("welcome_title.fadeOut");
+        }
+
+        if(getConfig().contains("welcome_sound")) {
+            isJoinSoundEnabled = getConfig().getBoolean("welcome_sound.enabled_sound");
+            joinSound = getConfig().getString("welcome_sound.sound");
+            joinSoundVolume = (float) getConfig().getDouble("welcome_sound.volume");
+            joinSoundPitch = (float) getConfig().getDouble("welcome_sound.pitch");
         }
     }
 }

@@ -1,7 +1,7 @@
 welcome_message:
-  # Whether if the welcome public message module should be enabled
+  # Whether if the welcome public message module should be enabled.
   enable_public_message: true
-  # Whether if the welcome private message module should be enabled
+  # Whether if the welcome private message module should be enabled.
   enable_private_message: true
   # The public welcome message. Leave "" to remove the join message.
   public_message: "&e%name% joined the server"
@@ -9,7 +9,7 @@ welcome_message:
   private_message: "&7Welcome back %name%!"
 
 welcome_title:
-  # Whether if the welcome title module should be enabled
+  # Whether if the welcome title module should be enabled.
   enable_title: true
   # The title
   title: "WELCOME %name%"
@@ -21,3 +21,18 @@ welcome_title:
   stay: 70
   # Time in ticks for titles to fade out. Defaults to 20.
   fadeOut: 20
+
+welcome_sound:
+  # Whether if the welcome sound module should be enabled
+  enabled_sound: true
+  # The sound that would be played.
+  # List of available sounds:
+  # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html.
+  sound: "ENTITY_PLAYER_LEVELUP"
+  # The sound volume.
+  # As the sound is private ranges between 0.1 and 1.0.
+  volume: 1.0
+  # The sound pitch.
+  # Ranges between 0.5 and 2.0.
+  # 1.0 normal speed, 0.5 half speed, 2.0 double speed.
+  pitch: 1.0

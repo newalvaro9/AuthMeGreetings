@@ -4,6 +4,7 @@ import fr.xephi.authme.events.LoginEvent;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,6 +27,12 @@ public class AuthMeListener implements Listener {
     public Integer joinTitleStay;
     public Integer joinTitleFadeOut;
 
+    // welcome_sound
+    public Boolean isJoinSoundEnabled;
+    public String joinSound;
+    public Float joinSoundVolume;
+    public Float joinSoundPitch;
+
     public AuthMeListener(
             Boolean isPublicJoinMessageEnabled,
             String publicJoinMessage,
@@ -36,7 +43,11 @@ public class AuthMeListener implements Listener {
             String joinTitleSubtitle,
             Integer joinTitleFadeIn,
             Integer joinTitleStay,
-            Integer joinTitleFadeOut
+            Integer joinTitleFadeOut,
+            Boolean isJoinSoundEnabled,
+            String joinSound,
+            Float joinSoundVolume,
+            Float joinSoundPitch
     ) {
         // welcome_message
         this.isPublicJoinMessageEnabled = isPublicJoinMessageEnabled;
@@ -51,7 +62,15 @@ public class AuthMeListener implements Listener {
         this.joinTitleFadeIn = joinTitleFadeIn;
         this.joinTitleStay = joinTitleStay;
         this.joinTitleFadeOut = joinTitleFadeOut;
+
+        // welcome_sound
+        this.isJoinSoundEnabled = isJoinSoundEnabled;
+        this.joinSound = joinSound;
+        this.joinSoundVolume = joinSoundVolume;
+        this.joinSoundPitch = joinSoundPitch;
     }
+
+
 
     @EventHandler
     public void onLogin(LoginEvent event) {
@@ -64,7 +83,22 @@ public class AuthMeListener implements Listener {
             player.sendMessage(privateJoinMessage.replace("%name%", player.getName()));
         }
         if(isJoinTitleEnabled) {
-            player.sendTitle(joinTitle.replace("%name%", player.getName()), Objects.equals(joinTitleSubtitle, "") ? null : joinTitleSubtitle.replace("%name%", player.getName()), joinTitleFadeIn, joinTitleStay, joinTitleFadeOut);
+            player.sendTitle(
+                    joinTitle.replace("%name%", player.getName()),
+                    Objects.equals(joinTitleSubtitle, "") ? null : joinTitleSubtitle.replace("%name%", player.getName()),
+                    joinTitleFadeIn,
+                    joinTitleStay,
+                    joinTitleFadeOut
+            );
         }
+        if(isJoinSoundEnabled) {
+            player.playSound(
+                    player.getLocation(),
+                    Sound.valueOf(joinSound.toUpperCase()),
+                    joinSoundVolume,
+                    joinSoundPitch
+            );
+        }
+
     }
 }

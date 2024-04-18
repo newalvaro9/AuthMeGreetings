@@ -47,6 +47,11 @@ public class AMGCommands implements CommandExecutor {
                 Integer joinTitleStay = plugin.getConfig().getInt("welcome_title.stay");
                 Integer joinTitleFadeOut = plugin.getConfig().getInt("welcome_title.fadeOut");
 
+                Boolean isJoinSoundEnabled = plugin.getConfig().getBoolean("welcome_sound.enabled_sound");
+                String joinSound = plugin.getConfig().getString("welcome_sound.sound");
+                Float joinSoundVolume = (float) plugin.getConfig().getDouble("welcome_sound.volume");
+                Float joinSoundPitch = (float) plugin.getConfig().getDouble("welcome_sound.pitch");
+
                 // Unregister all the listeners and set new ones with new config
                 HandlerList.unregisterAll(plugin);
 
@@ -61,7 +66,11 @@ public class AMGCommands implements CommandExecutor {
                         joinTitleSubtitle,
                         joinTitleFadeIn,
                         joinTitleStay,
-                        joinTitleFadeOut
+                        joinTitleFadeOut,
+                        isJoinSoundEnabled,
+                        joinSound,
+                        joinSoundVolume,
+                        joinSoundPitch
                 );
                 plugin.getServer().getPluginManager().registerEvents(newListener, plugin);
 
