@@ -23,7 +23,9 @@ public class AMGCommands implements CommandExecutor {
             /* RELOAD COMMAND */
             if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
 
-                // PERMISSION CHECKS
+                if(!sender.hasPermission("permission.admin")) {
+                    return false;
+                }
 
                 plugin.reloadConfig();
 
