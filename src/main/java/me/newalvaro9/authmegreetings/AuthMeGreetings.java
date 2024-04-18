@@ -92,8 +92,6 @@ public class AuthMeGreetings extends JavaPlugin {
             isPrivateJoinMessageEnabled = getConfig().getBoolean("welcome_message.enable_private_message");
             publicJoinMessage = getConfig().getString("welcome_message.public_message");
             privateJoinMessage = getConfig().getString("welcome_message.private_message");
-        } else {
-            throw new IllegalArgumentException("Missing welcome_message properties [AuthMeGreetings/config.yml].");
         }
 
         if (getConfig().contains("welcome_title")) {
@@ -103,8 +101,6 @@ public class AuthMeGreetings extends JavaPlugin {
             joinTitleFadeIn = getConfig().getInt("welcome_title.fadeIn");
             joinTitleStay = getConfig().getInt("welcome_title.stay");
             joinTitleFadeOut = getConfig().getInt("welcome_title.fadeOut");
-        } else {
-            throw new IllegalArgumentException("Missing welcome_title properties [AuthMeGreetings/config.yml].");
         }
     }
 }
