@@ -34,6 +34,10 @@ public class AuthMeGreetings extends JavaPlugin {
     public Float joinSoundVolume;
     public Float joinSoundPitch;
 
+    public Boolean isJoinActionBarEnabled;
+    public String joinActionBarMessage;
+    public Double joinActionBarDuration;
+
     public Listener authMeListener;
     public AuthMeHook authMeHook;
 
@@ -89,7 +93,10 @@ public class AuthMeGreetings extends JavaPlugin {
                     isJoinSoundEnabled,
                     joinSound,
                     joinSoundVolume,
-                    joinSoundPitch
+                    joinSoundPitch,
+                    isJoinActionBarEnabled,
+                    joinActionBarMessage,
+                    joinActionBarDuration
             );
             getServer().getPluginManager().registerEvents(authMeListener, this);
         }
@@ -120,5 +127,15 @@ public class AuthMeGreetings extends JavaPlugin {
             joinSoundVolume = (float) getConfig().getDouble("welcome_sound.volume");
             joinSoundPitch = (float) getConfig().getDouble("welcome_sound.pitch");
         }
+
+        if(getConfig().contains("welcome_actionbar")) {
+            isJoinActionBarEnabled = getConfig().getBoolean("welcome_actionbar.enabled_actionbar");
+            joinActionBarMessage = getConfig().getString("welcome_actionbar.message");
+            joinActionBarDuration = getConfig().getDouble("welcome_actionbar.duration");
+        }
+    }
+
+    public static AuthMeGreetings getPlugin() {
+        return plugin;
     }
 }

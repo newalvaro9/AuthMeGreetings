@@ -52,6 +52,10 @@ public class AMGCommands implements CommandExecutor {
                 Float joinSoundVolume = (float) plugin.getConfig().getDouble("welcome_sound.volume");
                 Float joinSoundPitch = (float) plugin.getConfig().getDouble("welcome_sound.pitch");
 
+                Boolean isJoinActionBarEnabled = plugin.getConfig().getBoolean("welcome_actionbar.enabled_actionbar");
+                String joinActionBarMessage = plugin.getConfig().getString("welcome_actionbar.message");
+                Double joinActionBarDuration = plugin.getConfig().getDouble("welcome_actionbar.duration");
+
                 // Unregister all the listeners and set new ones with new config
                 HandlerList.unregisterAll(plugin);
 
@@ -70,7 +74,10 @@ public class AMGCommands implements CommandExecutor {
                         isJoinSoundEnabled,
                         joinSound,
                         joinSoundVolume,
-                        joinSoundPitch
+                        joinSoundPitch,
+                        isJoinActionBarEnabled,
+                        joinActionBarMessage,
+                        joinActionBarDuration
                 );
                 plugin.getServer().getPluginManager().registerEvents(newListener, plugin);
 

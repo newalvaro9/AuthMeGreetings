@@ -36,3 +36,11 @@ welcome_sound:
   # Ranges between 0.5 and 2.0.
   # 1.0 normal speed, 0.5 half speed, 2.0 double speed.
   pitch: 1.0
+
+welcome_actionbar:
+  # Whether if the action bar module should be enabled
+  enabled_actionbar: true
+  # The message that will be displayed at the action bar
+  message: "Welcome dear %name%"
+  # The duration (in seconds) of the action bar message
+  duration: 4.0

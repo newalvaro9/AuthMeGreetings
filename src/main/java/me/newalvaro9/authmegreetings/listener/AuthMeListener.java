@@ -2,6 +2,7 @@ package me.newalvaro9.authmegreetings.listener;
 
 import fr.xephi.authme.events.LoginEvent;
 
+import me.newalvaro9.authmegreetings.utils.ActionBar;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -33,6 +34,11 @@ public class AuthMeListener implements Listener {
     public Float joinSoundVolume;
     public Float joinSoundPitch;
 
+    // welcome_actionbar
+    public Boolean isJoinActionBarEnabled;
+    public String joinActionBarMessage;
+    public Double joinActionBarDuration;
+
     public AuthMeListener(
             Boolean isPublicJoinMessageEnabled,
             String publicJoinMessage,
@@ -47,7 +53,10 @@ public class AuthMeListener implements Listener {
             Boolean isJoinSoundEnabled,
             String joinSound,
             Float joinSoundVolume,
-            Float joinSoundPitch
+            Float joinSoundPitch,
+            Boolean isJoinActionBarEnabled,
+            String joinActionBarMessage,
+            Double joinActionBarDuration
     ) {
         // welcome_message
         this.isPublicJoinMessageEnabled = isPublicJoinMessageEnabled;
@@ -68,9 +77,12 @@ public class AuthMeListener implements Listener {
         this.joinSound = joinSound;
         this.joinSoundVolume = joinSoundVolume;
         this.joinSoundPitch = joinSoundPitch;
+
+        // welcome_actionbar
+        this.isJoinActionBarEnabled = isJoinActionBarEnabled;
+        this.joinActionBarMessage = ChatColor.translateAlternateColorCodes('&', joinActionBarMessage);
+        this.joinActionBarDuration = joinActionBarDuration;
     }
-
-
 
     @EventHandler
     public void onLogin(LoginEvent event) {
@@ -99,6 +111,9 @@ public class AuthMeListener implements Listener {
                     joinSoundPitch
             );
         }
-
+        if(isJoinActionBarEnabled) {
+            int durationTicks = (int) (joinActionBarDuration * 20);
+            ActionBar.sendActionBar(player, joinActionBarMessage.replace("%name%", player.getName()), durationTicks);
+        }
     }
 }
