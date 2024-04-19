@@ -8,6 +8,7 @@ welcome_message:
   # The private welcome message.
   private_message: "&7Welcome back %name%!"
 
+
 welcome_title:
   # Whether if the welcome title module should be enabled.
   enable_title: true
@@ -21,6 +22,7 @@ welcome_title:
   stay: 70
   # Time in ticks for titles to fade out. Defaults to 20.
   fadeOut: 20
+
 
 welcome_sound:
   # Whether if the welcome sound module should be enabled
@@ -37,10 +39,11 @@ welcome_sound:
   # 1.0 normal speed, 0.5 half speed, 2.0 double speed.
   pitch: 1.0
 
+
 welcome_actionbar:
   # Whether if the action bar module should be enabled
   enabled_actionbar: true
   # The message that will be displayed at the action bar
-  message: "Welcome dear %name%"
-  # The duration (in seconds) of the action bar message
-  duration: 4.0
+  message: "&eWelcome dear %name%!"
+  # Time in seconds the action bar message will be shown
+  duration: 4.5
