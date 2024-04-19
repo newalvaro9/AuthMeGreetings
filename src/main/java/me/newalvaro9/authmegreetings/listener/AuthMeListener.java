@@ -24,9 +24,9 @@ public class AuthMeListener implements Listener {
     public Boolean isJoinTitleEnabled;
     public String joinTitle;
     public String joinTitleSubtitle;
-    public Integer joinTitleFadeIn;
-    public Integer joinTitleStay;
-    public Integer joinTitleFadeOut;
+    public Double joinTitleFadeIn;
+    public Double joinTitleStay;
+    public Double joinTitleFadeOut;
 
     // welcome_sound
     public Boolean isJoinSoundEnabled;
@@ -47,9 +47,9 @@ public class AuthMeListener implements Listener {
             Boolean isJoinTitleEnabled,
             String joinTitle,
             String joinTitleSubtitle,
-            Integer joinTitleFadeIn,
-            Integer joinTitleStay,
-            Integer joinTitleFadeOut,
+            Double joinTitleFadeIn,
+            Double joinTitleStay,
+            Double joinTitleFadeOut,
             Boolean isJoinSoundEnabled,
             String joinSound,
             Float joinSoundVolume,
@@ -98,9 +98,9 @@ public class AuthMeListener implements Listener {
             player.sendTitle(
                     joinTitle.replace("%name%", player.getName()),
                     Objects.equals(joinTitleSubtitle, "") ? null : joinTitleSubtitle.replace("%name%", player.getName()),
-                    joinTitleFadeIn,
-                    joinTitleStay,
-                    joinTitleFadeOut
+                    (int) (joinTitleFadeIn * 20),
+                    (int) (joinTitleStay * 20),
+                    (int) (joinTitleFadeOut * 20)
             );
         }
         if(isJoinSoundEnabled) {
@@ -112,8 +112,11 @@ public class AuthMeListener implements Listener {
             );
         }
         if(isJoinActionBarEnabled) {
-            int durationTicks = (int) (joinActionBarDuration * 20);
-            ActionBar.sendActionBar(player, joinActionBarMessage.replace("%name%", player.getName()), durationTicks);
+            ActionBar.sendActionBar(
+                    player,
+                    joinActionBarMessage.replace("%name%", player.getName()),
+                    (int) (joinActionBarDuration * 20)
+            );
         }
     }
 }

@@ -16,12 +16,12 @@ welcome_title:
   title: "WELCOME %name%"
   # The subtitle. Leave "" if you don't want any subtitle
   subtitle: ""
-  # Time in ticks for the title to fade in. Defaults to 10.
-  fadeIn: 10
-  # Time in ticks for titles to stay. Defaults to 70.
-  stay: 70
-  # Time in ticks for titles to fade out. Defaults to 20.
-  fadeOut: 20
+  # Time in seconds for the title to fade in.
+  fadeIn: 0.5
+  # Time in seconds for the title to stay.
+  stay: 3.5
+  # Time in seconds for the title to fade out.
+  fadeOut: 1.0
 
 
 welcome_sound:

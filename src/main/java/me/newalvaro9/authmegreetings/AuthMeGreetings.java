@@ -24,9 +24,9 @@ public class AuthMeGreetings extends JavaPlugin {
     public Boolean isJoinTitleEnabled;
     public String joinTitle;
     public String joinTitleSubtitle;
-    public Integer joinTitleFadeIn;
-    public Integer joinTitleStay;
-    public Integer joinTitleFadeOut;
+    public Double joinTitleFadeIn;
+    public Double joinTitleStay;
+    public Double joinTitleFadeOut;
 
     // welcome_sound
     public Boolean isJoinSoundEnabled;
@@ -116,9 +116,9 @@ public class AuthMeGreetings extends JavaPlugin {
             isJoinTitleEnabled = getConfig().getBoolean("welcome_title.enable_title");
             joinTitle = getConfig().getString("welcome_title.title");
             joinTitleSubtitle = getConfig().getString("welcome_title.subtitle");
-            joinTitleFadeIn = getConfig().getInt("welcome_title.fadeIn");
-            joinTitleStay = getConfig().getInt("welcome_title.stay");
-            joinTitleFadeOut = getConfig().getInt("welcome_title.fadeOut");
+            joinTitleFadeIn = getConfig().getDouble("welcome_title.fadeIn");
+            joinTitleStay = getConfig().getDouble("welcome_title.stay");
+            joinTitleFadeOut = getConfig().getDouble("welcome_title.fadeOut");
         }
 
         if(getConfig().contains("welcome_sound")) {

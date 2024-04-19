@@ -43,9 +43,9 @@ public class AMGCommands implements CommandExecutor {
                 Boolean isJoinTitleEnabled = plugin.getConfig().getBoolean("welcome_title.enable_title");
                 String joinTitle = plugin.getConfig().getString("welcome_title.title");
                 String joinTitleSubtitle = plugin.getConfig().getString("welcome_title.subtitle");
-                Integer joinTitleFadeIn = plugin.getConfig().getInt("welcome_title.fadeIn");
-                Integer joinTitleStay = plugin.getConfig().getInt("welcome_title.stay");
-                Integer joinTitleFadeOut = plugin.getConfig().getInt("welcome_title.fadeOut");
+                Double joinTitleFadeIn = plugin.getConfig().getDouble("welcome_title.fadeIn");
+                Double joinTitleStay = plugin.getConfig().getDouble("welcome_title.stay");
+                Double joinTitleFadeOut = plugin.getConfig().getDouble("welcome_title.fadeOut");
 
                 Boolean isJoinSoundEnabled = plugin.getConfig().getBoolean("welcome_sound.enabled_sound");
                 String joinSound = plugin.getConfig().getString("welcome_sound.sound");
