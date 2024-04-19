@@ -60,15 +60,22 @@ public class AuthMeGreetings extends JavaPlugin {
         if (pluginManager.isPluginEnabled("AuthMe")) {
             registerAuthMeComponents();
         }
+        getLogger().info("\n"+
+                "    ___     __  ___ ______\n" +
+                "   /   |   /  |/  // ____/\n" +
+                "  / /| |  / /|_/ // / __  \n" +
+                " / ___ | / /  / // /_/ /  \n" +
+                "/_/  |_|/_/  /_/ \\____/");
 
         getLogger().info("AuthMe Greetings has been successfully enabled!");
     }
 
     @Override
     public void onDisable() {
+        getLogger().info("Disabling AuthMe Greetings...");
         getLogger().info("Unhooking from AuthMe");
         authMeHook.killAuthMeHook();
-        getLogger().info("Disabling AuthMe Greetings");
+        getLogger().info("AuthMe Greetings has been successfully disabled!");
     }
 
     /**
@@ -76,29 +83,34 @@ public class AuthMeGreetings extends JavaPlugin {
      * Call this method only when certain that AuthMe is enabled.
      */
     public void registerAuthMeComponents() {
-        getLogger().info("Hooking into AuthMe");
-        authMeHook.initializeAuthMeHook();
-        if (authMeListener == null) {
-            authMeListener = new AuthMeListener(
-                    isPublicJoinMessageEnabled,
-                    publicJoinMessage,
-                    isPrivateJoinMessageEnabled,
-                    privateJoinMessage,
-                    isJoinTitleEnabled,
-                    joinTitle,
-                    joinTitleSubtitle,
-                    joinTitleFadeIn,
-                    joinTitleStay,
-                    joinTitleFadeOut,
-                    isJoinSoundEnabled,
-                    joinSound,
-                    joinSoundVolume,
-                    joinSoundPitch,
-                    isJoinActionBarEnabled,
-                    joinActionBarMessage,
-                    joinActionBarDuration
-            );
-            getServer().getPluginManager().registerEvents(authMeListener, this);
+        getLogger().info("Hooking into AuthMe...");
+        try {
+            authMeHook.initializeAuthMeHook();
+            if (authMeListener == null) {
+                authMeListener = new AuthMeListener(
+                        isPublicJoinMessageEnabled,
+                        publicJoinMessage,
+                        isPrivateJoinMessageEnabled,
+                        privateJoinMessage,
+                        isJoinTitleEnabled,
+                        joinTitle,
+                        joinTitleSubtitle,
+                        joinTitleFadeIn,
+                        joinTitleStay,
+                        joinTitleFadeOut,
+                        isJoinSoundEnabled,
+                        joinSound,
+                        joinSoundVolume,
+                        joinSoundPitch,
+                        isJoinActionBarEnabled,
+                        joinActionBarMessage,
+                        joinActionBarDuration
+                );
+                getServer().getPluginManager().registerEvents(authMeListener, this);
+                getLogger().info("Successfully hooked into AuthMe!");
+            }
+        } catch (Exception e) {
+            getLogger().severe("An error occurred while hooking into AuthMe: " + e.getMessage());
         }
     }
 
