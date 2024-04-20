@@ -34,6 +34,7 @@ public class AuthMeGreetings extends JavaPlugin {
     public Float joinSoundVolume;
     public Float joinSoundPitch;
 
+    // welcome_actionbar
     public Boolean isJoinActionBarEnabled;
     public String joinActionBarMessage;
     public Double joinActionBarDuration;
