@@ -85,6 +85,15 @@ public class AMGCommands implements CommandExecutor {
                 return true;
             }
         }
+        if(args.length == 1 && args[0].equalsIgnoreCase("help")) {
+            if(!sender.hasPermission("permission.admin")) {
+                return false;
+            }
+
+            sender.sendMessage("\n" + "/amg reload - Reloads the plugin's configuration");
+
+            return true;
+        }
         return false;
     }
 }
