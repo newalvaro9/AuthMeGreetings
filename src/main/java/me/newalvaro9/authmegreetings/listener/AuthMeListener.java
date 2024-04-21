@@ -20,6 +20,12 @@ public class AuthMeListener implements Listener {
     public Boolean isPrivateJoinMessageEnabled;
     public String privateJoinMessage;
 
+    // first_join_welcome_message
+    public Boolean isPublicFirstJoinMessageEnabled;
+    public String publicFirstJoinMessage;
+    public Boolean isPrivateFirstJoinMessageEnabled;
+    public String privateFirstJoinMessage;
+
     // welcome_title
     public Boolean isJoinTitleEnabled;
     public String joinTitle;
@@ -56,13 +62,23 @@ public class AuthMeListener implements Listener {
             Float joinSoundPitch,
             Boolean isJoinActionBarEnabled,
             String joinActionBarMessage,
-            Double joinActionBarDuration
+            Double joinActionBarDuration,
+            Boolean isPublicFirstJoinMessageEnabled,
+            String publicFirstJoinMessage,
+            Boolean isPrivateFirstJoinMessageEnabled,
+            String privateFirstJoinMessage
     ) {
         // welcome_message
         this.isPublicJoinMessageEnabled = isPublicJoinMessageEnabled;
         this.publicJoinMessage = ChatColor.translateAlternateColorCodes('&', publicJoinMessage);
         this.isPrivateJoinMessageEnabled = isPrivateJoinMessageEnabled;
         this.privateJoinMessage = ChatColor.translateAlternateColorCodes('&', privateJoinMessage);
+
+        // first_join_welcome_message
+        this.isPublicFirstJoinMessageEnabled = isPublicFirstJoinMessageEnabled;
+        this.publicFirstJoinMessage = publicFirstJoinMessage;
+        this.isPrivateFirstJoinMessageEnabled = isPrivateFirstJoinMessageEnabled;
+        this.privateFirstJoinMessage = privateFirstJoinMessage;
 
         // welcome_title
         this.isJoinTitleEnabled = isJoinTitleEnabled;
@@ -88,13 +104,23 @@ public class AuthMeListener implements Listener {
     public void onLogin(LoginEvent event) {
         Player player = event.getPlayer();
 
-        if(isPublicJoinMessageEnabled) {
-            Bukkit.broadcastMessage(publicJoinMessage.replace("%name%", player.getName()));
+        if(player.hasPlayedBefore()) {
+            if (isPublicJoinMessageEnabled) {
+                Bukkit.broadcastMessage(publicJoinMessage.replace("%name%", player.getName()));
+            }
+            if (isPrivateJoinMessageEnabled) {
+                player.sendMessage(privateJoinMessage.replace("%name%", player.getName()));
+            }
+        } else {
+            if(isPublicFirstJoinMessageEnabled) {
+                Bukkit.broadcastMessage(publicFirstJoinMessage.replace("%name%", player.getName()));
+            }
+            if(isPrivateFirstJoinMessageEnabled) {
+                player.sendMessage(privateFirstJoinMessage.replace("%name%", player.getName()));
+            }
         }
-        if(isPrivateJoinMessageEnabled) {
-            player.sendMessage(privateJoinMessage.replace("%name%", player.getName()));
-        }
-        if(isJoinTitleEnabled) {
+
+        if (isJoinTitleEnabled) {
             player.sendTitle(
                     joinTitle.replace("%name%", player.getName()),
                     Objects.equals(joinTitleSubtitle, "") ? null : joinTitleSubtitle.replace("%name%", player.getName()),
@@ -103,6 +129,7 @@ public class AuthMeListener implements Listener {
                     (int) (joinTitleFadeOut * 20)
             );
         }
+
         if(isJoinSoundEnabled) {
             player.playSound(
                     player.getLocation(),

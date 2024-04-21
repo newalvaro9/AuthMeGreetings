@@ -9,6 +9,17 @@ welcome_message:
   private_message: "&7Welcome back %name%!"
 
 
+first_join_welcome_message:
+  # Whether if the first join welcome public message module should be enabled.
+  enable_public_message: true
+  # Whether if the first join welcome private message module should be enabled.
+  enable_private_message: true
+  # The public first join welcome message. Leave "" to remove the first join message.
+  public_message: "&e%name% joined the server for the first time!"
+  # The private first join welcome message.
+  private_message: "&7Welcome to the server %name%!"
+
+
 welcome_title:
   # Whether if the welcome title module should be enabled.
   enable_title: true

@@ -1,5 +1,4 @@
 package me.newalvaro9.authmegreetings.service;
-
 import me.newalvaro9.authmegreetings.AuthMeGreetings;
 import me.newalvaro9.authmegreetings.listener.AuthMeListener;
 
@@ -40,6 +39,11 @@ public class AMGCommands implements CommandExecutor {
                 String publicJoinMessage = plugin.getConfig().getString("welcome_message.public_message");
                 String privateJoinMessage = plugin.getConfig().getString("welcome_message.private_message");
 
+                Boolean isPublicFirstJoinMessageEnabled = plugin.getConfig().getBoolean("first_join_welcome_message.enable_public_message");
+                String publicFirstJoinMessage = plugin.getConfig().getString("first_join_welcome_message.public_message");
+                Boolean isPrivateFirstJoinMessageEnabled = plugin.getConfig().getBoolean("first_join_welcome_message.enable_private_message");
+                String privateFirstJoinMessage = plugin.getConfig().getString("first_join_welcome_message.private_message");
+
                 Boolean isJoinTitleEnabled = plugin.getConfig().getBoolean("welcome_title.enable_title");
                 String joinTitle = plugin.getConfig().getString("welcome_title.title");
                 String joinTitleSubtitle = plugin.getConfig().getString("welcome_title.subtitle");
@@ -77,7 +81,11 @@ public class AMGCommands implements CommandExecutor {
                         joinSoundPitch,
                         isJoinActionBarEnabled,
                         joinActionBarMessage,
-                        joinActionBarDuration
+                        joinActionBarDuration,
+                        isPublicFirstJoinMessageEnabled,
+                        publicFirstJoinMessage,
+                        isPrivateFirstJoinMessageEnabled,
+                        privateFirstJoinMessage
                 );
                 plugin.getServer().getPluginManager().registerEvents(newListener, plugin);
 

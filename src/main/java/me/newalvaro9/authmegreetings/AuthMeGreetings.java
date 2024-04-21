@@ -20,6 +20,12 @@ public class AuthMeGreetings extends JavaPlugin {
     public Boolean isPrivateJoinMessageEnabled;
     public String privateJoinMessage;
 
+    // first_join_welcome_message
+    public Boolean isPublicFirstJoinMessageEnabled;
+    public String publicFirstJoinMessage;
+    public Boolean isPrivateFirstJoinMessageEnabled;
+    public String privateFirstJoinMessage;
+
     // welcome_title
     public Boolean isJoinTitleEnabled;
     public String joinTitle;
@@ -105,7 +111,11 @@ public class AuthMeGreetings extends JavaPlugin {
                         joinSoundPitch,
                         isJoinActionBarEnabled,
                         joinActionBarMessage,
-                        joinActionBarDuration
+                        joinActionBarDuration,
+                        isPublicFirstJoinMessageEnabled,
+                        publicFirstJoinMessage,
+                        isPrivateFirstJoinMessageEnabled,
+                        privateFirstJoinMessage
                 );
                 getServer().getPluginManager().registerEvents(authMeListener, this);
                 getLogger().info("Successfully hooked into AuthMe!");
@@ -123,6 +133,13 @@ public class AuthMeGreetings extends JavaPlugin {
             isPrivateJoinMessageEnabled = getConfig().getBoolean("welcome_message.enable_private_message");
             publicJoinMessage = getConfig().getString("welcome_message.public_message");
             privateJoinMessage = getConfig().getString("welcome_message.private_message");
+        }
+
+        if (getConfig().contains("first_join_welcome_message")) {
+            isPublicFirstJoinMessageEnabled = getConfig().getBoolean("first_join_welcome_message.enable_public_message");
+            isPrivateFirstJoinMessageEnabled = getConfig().getBoolean("first_join_welcome_message.enable_private_message");
+            publicFirstJoinMessage = getConfig().getString("first_join_welcome_message.public_message");
+            privateFirstJoinMessage = getConfig().getString("first_join_welcome_message.private_message");
         }
 
         if (getConfig().contains("welcome_title")) {
