@@ -1,6 +1,7 @@
 package me.newalvaro9.authmegreetings;
 
 import me.newalvaro9.authmegreetings.listener.AuthMeListener;
+import me.newalvaro9.authmegreetings.listener.PlayerQuitListener;
 import me.newalvaro9.authmegreetings.service.AuthMeHook;
 import me.newalvaro9.authmegreetings.service.AMGCommands;
 
@@ -26,6 +27,10 @@ public class AuthMeGreetings extends JavaPlugin {
     public Boolean isPrivateFirstJoinMessageEnabled;
     public String privateFirstJoinMessage;
 
+    // leave_message
+    public Boolean isLeaveMessageEnabled;
+    public String leaveMessage;
+
     // welcome_title
     public Boolean isJoinTitleEnabled;
     public String joinTitle;
@@ -46,6 +51,7 @@ public class AuthMeGreetings extends JavaPlugin {
     public Double joinActionBarDuration;
 
     public Listener authMeListener;
+    public Listener playerQuitListener;
     public AuthMeHook authMeHook;
 
     @Override
@@ -67,6 +73,9 @@ public class AuthMeGreetings extends JavaPlugin {
         if (pluginManager.isPluginEnabled("AuthMe")) {
             registerAuthMeComponents();
         }
+
+        registerListeners();
+
         getLogger().info("\n"+
                 "    ___     __  ___ ______\n" +
                 "   /   |   /  |/  // ____/\n" +
@@ -83,6 +92,21 @@ public class AuthMeGreetings extends JavaPlugin {
         getLogger().info("Unhooking from AuthMe");
         authMeHook.killAuthMeHook();
         getLogger().info("AuthMe Greetings has been successfully disabled!");
+    }
+
+    public void registerListeners() {
+        try {
+            if (playerQuitListener == null) {
+                playerQuitListener = new PlayerQuitListener(
+                        isLeaveMessageEnabled,
+                        leaveMessage
+                );
+
+                plugin.getServer().getPluginManager().registerEvents(playerQuitListener, plugin);
+            }
+        } catch (Exception e) {
+            getLogger().severe("An error occurred while registering events: " + e.getMessage());
+        }
     }
 
     /**
@@ -140,6 +164,11 @@ public class AuthMeGreetings extends JavaPlugin {
             isPrivateFirstJoinMessageEnabled = getConfig().getBoolean("first_join_welcome_message.enable_private_message");
             publicFirstJoinMessage = getConfig().getString("first_join_welcome_message.public_message");
             privateFirstJoinMessage = getConfig().getString("first_join_welcome_message.private_message");
+        }
+
+        if (getConfig().contains("leave_message")) {
+            isLeaveMessageEnabled = getConfig().getBoolean("leave_message.enable_leave_message");
+            leaveMessage = getConfig().getString("leave_message.message");
         }
 
         if (getConfig().contains("welcome_title")) {

@@ -1,8 +1,8 @@
 package me.newalvaro9.authmegreetings.listener;
 
+import me.newalvaro9.authmegreetings.utils.ActionBar;
 import fr.xephi.authme.events.LoginEvent;
 
-import me.newalvaro9.authmegreetings.utils.ActionBar;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;

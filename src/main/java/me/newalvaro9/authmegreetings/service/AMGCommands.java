@@ -1,6 +1,8 @@
 package me.newalvaro9.authmegreetings.service;
+
 import me.newalvaro9.authmegreetings.AuthMeGreetings;
 import me.newalvaro9.authmegreetings.listener.AuthMeListener;
+import me.newalvaro9.authmegreetings.listener.PlayerQuitListener;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -44,6 +46,9 @@ public class AMGCommands implements CommandExecutor {
                 Boolean isPrivateFirstJoinMessageEnabled = plugin.getConfig().getBoolean("first_join_welcome_message.enable_private_message");
                 String privateFirstJoinMessage = plugin.getConfig().getString("first_join_welcome_message.private_message");
 
+                Boolean isLeaveMessageEnabled = plugin.getConfig().getBoolean("leave_message.enable_leave_message");
+                String leaveMessage = plugin.getConfig().getString("leave_message.message");
+
                 Boolean isJoinTitleEnabled = plugin.getConfig().getBoolean("welcome_title.enable_title");
                 String joinTitle = plugin.getConfig().getString("welcome_title.title");
                 String joinTitleSubtitle = plugin.getConfig().getString("welcome_title.subtitle");
@@ -64,7 +69,7 @@ public class AMGCommands implements CommandExecutor {
                 HandlerList.unregisterAll(plugin);
 
                 // AuthMeListener
-                AuthMeListener newListener = new AuthMeListener(
+                AuthMeListener newAuthMeListener = new AuthMeListener(
                         isPublicJoinMessageEnabled,
                         publicJoinMessage,
                         isPrivateJoinMessageEnabled,
@@ -87,7 +92,15 @@ public class AMGCommands implements CommandExecutor {
                         joinActionBarMessage,
                         joinActionBarDuration
                 );
-                plugin.getServer().getPluginManager().registerEvents(newListener, plugin);
+
+                // PlayerQuitListener
+                PlayerQuitListener newPlayerQuitListener = new PlayerQuitListener(
+                        isLeaveMessageEnabled,
+                        leaveMessage
+                );
+
+                plugin.getServer().getPluginManager().registerEvents(newAuthMeListener, plugin);
+                plugin.getServer().getPluginManager().registerEvents(newPlayerQuitListener, plugin);
 
                 sender.sendMessage(ChatColor.GOLD + "Successfully reloaded AuthMeGreetings!");
                 return true;

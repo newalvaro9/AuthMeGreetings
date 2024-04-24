@@ -20,6 +20,11 @@ first_join_welcome_message:
   private_message: "&7Welcome to the server %name%!"
 
 
+leave_message:
+  enable_leave_message: true
+  message: "&e%name% left the server, bye!"
+
+
 welcome_title:
   # Whether if the welcome title module should be enabled.
   enable_title: true
