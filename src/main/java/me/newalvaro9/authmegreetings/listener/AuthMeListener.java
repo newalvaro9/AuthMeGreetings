@@ -50,6 +50,10 @@ public class AuthMeListener implements Listener {
             String publicJoinMessage,
             Boolean isPrivateJoinMessageEnabled,
             String privateJoinMessage,
+            Boolean isPublicFirstJoinMessageEnabled,
+            String publicFirstJoinMessage,
+            Boolean isPrivateFirstJoinMessageEnabled,
+            String privateFirstJoinMessage,
             Boolean isJoinTitleEnabled,
             String joinTitle,
             String joinTitleSubtitle,
@@ -62,11 +66,7 @@ public class AuthMeListener implements Listener {
             Float joinSoundPitch,
             Boolean isJoinActionBarEnabled,
             String joinActionBarMessage,
-            Double joinActionBarDuration,
-            Boolean isPublicFirstJoinMessageEnabled,
-            String publicFirstJoinMessage,
-            Boolean isPrivateFirstJoinMessageEnabled,
-            String privateFirstJoinMessage
+            Double joinActionBarDuration
     ) {
         // welcome_message
         this.isPublicJoinMessageEnabled = isPublicJoinMessageEnabled;

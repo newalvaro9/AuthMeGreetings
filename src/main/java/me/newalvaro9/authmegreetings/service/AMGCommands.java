@@ -69,6 +69,10 @@ public class AMGCommands implements CommandExecutor {
                         publicJoinMessage,
                         isPrivateJoinMessageEnabled,
                         privateJoinMessage,
+                        isPublicFirstJoinMessageEnabled,
+                        publicFirstJoinMessage,
+                        isPrivateFirstJoinMessageEnabled,
+                        privateFirstJoinMessage,
                         isJoinTitleEnabled,
                         joinTitle,
                         joinTitleSubtitle,
@@ -81,11 +85,7 @@ public class AMGCommands implements CommandExecutor {
                         joinSoundPitch,
                         isJoinActionBarEnabled,
                         joinActionBarMessage,
-                        joinActionBarDuration,
-                        isPublicFirstJoinMessageEnabled,
-                        publicFirstJoinMessage,
-                        isPrivateFirstJoinMessageEnabled,
-                        privateFirstJoinMessage
+                        joinActionBarDuration
                 );
                 plugin.getServer().getPluginManager().registerEvents(newListener, plugin);
 

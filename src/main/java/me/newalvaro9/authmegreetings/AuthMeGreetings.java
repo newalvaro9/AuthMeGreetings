@@ -99,6 +99,10 @@ public class AuthMeGreetings extends JavaPlugin {
                         publicJoinMessage,
                         isPrivateJoinMessageEnabled,
                         privateJoinMessage,
+                        isPublicFirstJoinMessageEnabled,
+                        publicFirstJoinMessage,
+                        isPrivateFirstJoinMessageEnabled,
+                        privateFirstJoinMessage,
                         isJoinTitleEnabled,
                         joinTitle,
                         joinTitleSubtitle,
@@ -111,11 +115,7 @@ public class AuthMeGreetings extends JavaPlugin {
                         joinSoundPitch,
                         isJoinActionBarEnabled,
                         joinActionBarMessage,
-                        joinActionBarDuration,
-                        isPublicFirstJoinMessageEnabled,
-                        publicFirstJoinMessage,
-                        isPrivateFirstJoinMessageEnabled,
-                        privateFirstJoinMessage
+                        joinActionBarDuration
                 );
                 getServer().getPluginManager().registerEvents(authMeListener, this);
                 getLogger().info("Successfully hooked into AuthMe!");
