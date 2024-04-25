@@ -21,7 +21,9 @@ first_join_welcome_message:
 
 
 leave_message:
+  # Whether if the leave message module should be enabled.
   enable_leave_message: true
+  # The message that will be sent when a user leaves the server.
   message: "&e%name% left the server, bye!"
 
 
