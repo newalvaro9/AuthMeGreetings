@@ -4,6 +4,7 @@ import me.newalvaro9.authmegreetings.listener.AuthMeListener;
 import me.newalvaro9.authmegreetings.listener.PlayerQuitListener;
 import me.newalvaro9.authmegreetings.service.AuthMeHook;
 import me.newalvaro9.authmegreetings.service.AMGCommands;
+import me.newalvaro9.authmegreetings.service.UpdateChecker;
 
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
@@ -56,6 +57,14 @@ public class AuthMeGreetings extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        new UpdateChecker(this, 116418).getVersion(version -> {
+            if (this.getDescription().getVersion().equals(version)) {
+                getLogger().info("Resource up-to-date.");
+            } else {
+                getLogger().info("There is a new update available. --> https://www.spigotmc.org/resources/authmegreetings.116418/");
+            }
+        });
+
         plugin = this;
 
         final PluginManager pluginManager = getServer().getPluginManager();
