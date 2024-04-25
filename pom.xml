@@ -6,7 +6,7 @@
 
   <groupId>me.newalvaro9</groupId>
   <artifactId>AuthMeGreetings</artifactId>
-  <version>1.0</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
 
   <name>AuthMeGreetings</name>
